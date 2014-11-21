@@ -196,7 +196,27 @@ class Run extends Console\Dispatcher\Kit {
               break;
         }
 
-        $atoum = 'atoum';
+        if(WITH_COMPOSER) {
+
+            $atoum =
+                dirname(
+                    dirname(
+                        dirname(
+                            dirname(
+                                dirname(
+                                    __DIR__
+                                )
+                            )
+                        )
+                    )
+                ) .
+                DS .
+                'bin' .
+                DS .
+                'atoum';
+        }
+        else
+            $atoum = 'atoum';
 
         if(isset($_SERVER['HOA_ATOUM_BIN']))
             $atoum = $_SERVER['HOA_ATOUM_BIN'];
